@@ -29,7 +29,6 @@ err = caughtError
 echo "error"
 } finally {
  echo "finished" 
- }
  
  // Must re-throw exception to propagate error:
  if (err) {
