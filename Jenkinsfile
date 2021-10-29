@@ -20,7 +20,7 @@ stage ('Stage 1') {
  
 	def workspace = pwd()
 	echo "workspace=${workspace}"
-        exit 1
+        echo "result: ${currentBuild.result}"
 }	
 } // node
 } // try end
@@ -28,6 +28,6 @@ catch (exc) {
         currentBuild.result = 'FAILURE'
 } finally {
  echo "finished"
- echo currentBuild.result 
- echo currentBuild
+ echo "final result: ${currentBuild.result}"
+ echo currentBuild.currentResult
 }
