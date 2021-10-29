@@ -26,9 +26,8 @@ stage ('Stage 1') {
 } // try end
 catch (exc) {
         currentBuild.result = 'FAILURE'
-        err = caughtError
-        echo err
 } finally {
  echo "finished"
  echo currentBuild.result 
+ echo currentBuild
 }
