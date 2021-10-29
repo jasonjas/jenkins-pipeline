@@ -20,6 +20,7 @@ stage ('Stage 1') {
  
 	def workspace = pwd()
 	echo "workspace=${workspace}"
+        exit 1
 }	
 } // node
 } // try end
