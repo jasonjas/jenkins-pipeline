@@ -12,21 +12,22 @@ import groovy.json.JsonSlurperClassic
 import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
- 
+
 try {
-node {
+node('master') {
 stage ('Stage 1') {
-echo "BUILD_URL=${env.BUILD_URL}"
+	echo "BUILD_URL=${env.BUILD_URL}"
  
-def workspace = pwd()
-echo "workspace=${workspace}"
- 
-}
+	def workspace = pwd()
+	echo "workspace=${workspace}"
+}	
 } // node
 } // try end
 catch (exc) {
-err = caughtError
-echo "error"
+        currentBuild.result = 'FAILURE'
+        err = caughtError
+        echo err
+        echo currentBuild.result
 } finally {
  echo "finished" 
 }
