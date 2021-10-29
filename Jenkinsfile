@@ -23,7 +23,7 @@ stage ('Stage 1') {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sh "exit 1"
         }
-        echo "stage 1 current result: ${currentBuild.result}"
+        echo "stage 1 current result: ${currentBuild.currentResult}"
         echo "stage 1 result: ${currentBuild.result}"
 } // stage
 stage ('Stage 2') {
