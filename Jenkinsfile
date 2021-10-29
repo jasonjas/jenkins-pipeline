@@ -27,7 +27,7 @@ catch (exc) {
         currentBuild.result = 'FAILURE'
         err = caughtError
         echo err
-        echo currentBuild.result
 } finally {
- echo "finished" 
+ echo "finished"
+ echo currentBuild.result 
 }
