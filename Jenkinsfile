@@ -21,6 +21,7 @@ stage ('Stage 1') {
 	def workspace = pwd()
 	echo "workspace=${workspace}"
         echo "result: ${currentBuild.result}"
+        sh 'exit 1'
 }	
 } // node
 } // try end
