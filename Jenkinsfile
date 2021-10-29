@@ -28,8 +28,8 @@ stage ('Stage 1') {
 } // stage
 stage ('Stage 2') {
         hidden = credentials("hello there")
-        echo hidden
         sh 'echo hello \$hidden'
+        echo hidden
         echo "Stage 2 current result: ${currentBuild.currentResult}"
         echo "Stage 2 result: ${currentBuild.result}"
 }
