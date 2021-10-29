@@ -20,9 +20,20 @@ stage ('Stage 1') {
  
 	def workspace = pwd()
 	echo "workspace=${workspace}"
-        echo "result: ${currentBuild.result}"
-        sh 'exit 1'
-}	
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                sh "exit 1"
+        }
+        echo "stage 1 current result: ${currentBuild.result}"
+        echo "stage 1 result: ${currentBuild.result}"
+} // stage
+stage ('Stage 2') {
+        hidden = credential("hello there")
+        echo hidden
+        sh 'echo hello \$hidden'
+        echo "Stage 2 current result: ${currentBuild.currentResult}"
+        echo "Stage 2 result: ${currentBuild.result}"
+}
+
 } // node
 } // try end
 catch (exc) {
@@ -30,5 +41,5 @@ catch (exc) {
 } finally {
  echo "finished"
  echo "final result: ${currentBuild.result}"
- echo currentBuild.currentResult
+ echo "final current result: ${currentBuild.currentResult}"
 }
