@@ -31,7 +31,7 @@ stage ('Stage 1') {
 stage ('Stage 2') {
         hidden = credentials("hello there")
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                echo '\$hidden'
+                echo "${hidden}"
         }
         sh 'echo hello \$hidden'
         echo 'value hidden: ${hidden}, value hidden: \$hidden'
