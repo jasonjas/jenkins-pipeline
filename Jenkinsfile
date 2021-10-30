@@ -25,6 +25,7 @@ stage ('Stage 1') {
         }
         echo "stage 1 current result: ${currentBuild.currentResult}"
         echo "stage 1 result: ${currentBuild.result}"
+        deleteDir()
         dir('test') {
                 git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
         }
