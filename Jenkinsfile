@@ -26,10 +26,7 @@ stage ('Stage 1') {
         echo "stage 1 current result: ${currentBuild.currentResult}"
         echo "stage 1 result: ${currentBuild.result}"
         dir('test') {
-                GitSCM (
-                        GIT_URL: 'https://github.com/jasonjas/jenkins-pipeline',
-                        GIT_BRANCH: 'master'
-                )
+                git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
         }
 } // stage
 stage ('Stage 2') {
