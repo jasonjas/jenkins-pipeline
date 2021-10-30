@@ -29,6 +29,7 @@ stage ('Stage 1') {
         dir('test') {
                 git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
         }
+        sh 'cat test/Jenkinsfile'
 } // stage
 stage ('Stage 2') {
         hidden = credentials("hello there")
@@ -39,6 +40,7 @@ stage ('Stage 2') {
         echo 'value hidden: ${hidden}, value hidden: \$hidden'
         echo "Stage 2 current result: ${currentBuild.currentResult}"
         echo "Stage 2 result: ${currentBuild.result}"
+        sh "environment vars: ${env}"
 }
 
 } // node
