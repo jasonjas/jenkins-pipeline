@@ -25,6 +25,13 @@ stage ('Stage 1') {
         }
         echo "stage 1 current result: ${currentBuild.currentResult}"
         echo "stage 1 result: ${currentBuild.result}"
+        dir('test') {
+                git {
+                        changelog: false, 
+                        poll: false, 
+                        url: 'https://github.com/jasonjas/jenkins-pipeline'
+                }
+        }
 } // stage
 stage ('Stage 2') {
         hidden = credentials("hello there")
