@@ -20,9 +20,6 @@ stage ('Stage 1') {
  
 	def workspace = pwd()
 	echo "workspace=${workspace}"
-        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh "exit 1"
-        }
         echo "stage 1 current result: ${currentBuild.currentResult}"
         echo "stage 1 result: ${currentBuild.result}"
         deleteDir()
@@ -34,7 +31,7 @@ stage ('Stage 1') {
 stage ('Stage 2') {
         hidden = credentials("hello there")
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                echo hidden
+                echo '\$hidden'
         }
         sh 'echo hello \$hidden'
         echo 'value hidden: ${hidden}, value hidden: \$hidden'
