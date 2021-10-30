@@ -36,7 +36,7 @@ stage ('Stage 2') {
         echo 'value hidden: ${hidden}, value hidden: \$hidden'
         echo "Stage 2 current result: ${currentBuild.currentResult}"
         echo "Stage 2 result: ${currentBuild.result}"
-        sh "environment vars: ${env}"
+        sh "echo environment vars: ${env}"
 }
 
 } // node
