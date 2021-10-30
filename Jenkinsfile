@@ -16,35 +16,35 @@ import java.net.URL
 try {
 node('master') {
 stage ('Stage 1') {
-	echo "BUILD_URL=${env.BUILD_URL}"
+    echo "BUILD_URL=${env.BUILD_URL}"
  
-	def workspace = pwd()
-	echo "workspace=${workspace}"
-        echo "stage 1 current result: ${currentBuild.currentResult}"
-        echo "stage 1 result: ${currentBuild.result}"
-        deleteDir()
-        dir('test') {
-                git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
-        }
+    def workspace = pwd()
+    echo "workspace=${workspace}"
+    echo "stage 1 current result: ${currentBuild.currentResult}"
+    echo "stage 1 result: ${currentBuild.result}"
+    deleteDir()
+    dir('test') {
+            git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
+    }
 } // stage
 stage ('Stage 2') {
-        hidden = credentials("hello there")
-        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                echo "${hidden}"
-        }
-        sh 'echo hello \$hidden'
-        echo 'value hidden: ${hidden}, value hidden: \$hidden'
-        echo "Stage 2 current result: ${currentBuild.currentResult}"
-        echo "Stage 2 result: ${currentBuild.result}"
-        sh "echo environment vars: ${env}"
+    hidden = credentials("hello there")
+    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            echo "${hidden}"
+    }
+    sh 'echo hello \$hidden'
+    echo 'value hidden: ${hidden}, value hidden: \$hidden'
+    echo "Stage 2 current result: ${currentBuild.currentResult}"
+    echo "Stage 2 result: ${currentBuild.result}"
+    sh "echo environment vars: ${env}"
 }
 
 } // node
 } // try end
 catch (exc) {
-        currentBuild.result = 'FAILURE'
+    currentBuild.result = 'FAILURE'
 } finally {
- echo "finished"
- echo "final result: ${currentBuild.result}"
- echo "final current result: ${currentBuild.currentResult}"
+    echo "finished"
+    echo "final result: ${currentBuild.result}"
+    echo "final current result: ${currentBuild.currentResult}"
 }
