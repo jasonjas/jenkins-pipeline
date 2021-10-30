@@ -26,7 +26,6 @@ stage ('Stage 1') {
         dir('test') {
                 git changelog: false, poll: false, url: 'https://github.com/jasonjas/jenkins-pipeline'
         }
-        sh 'cat test/Jenkinsfile'
 } // stage
 stage ('Stage 2') {
         hidden = credentials("hello there")
