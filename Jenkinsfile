@@ -37,9 +37,9 @@ stage ('Stage 2') {
 	echo ${a}
 	echo $hidden
     """
-    sh '
+    sh '''
 	echo hello there this is the hidden var - \$a - that was it
-    '
+    '''
     sh 'echo hello \$hidden \$a'
     echo 'value hidden: ${hidden}, value hidden: \$hidden'
     echo "Stage 2 current result: ${currentBuild.currentResult}"
