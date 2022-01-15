@@ -39,6 +39,8 @@ stage ('stage 3') {
 	echo ${a}
 	echo $hidden
     """
+}
+stage ('stage 4') {
     sh '''
 	echo hello there this is the hidden var - \$a - that was it
     '''
