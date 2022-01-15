@@ -36,7 +36,8 @@ stage ('Stage 2') {
     }
 }
 stage ('stage 3') {
-	sh 'curl -k \${a} > a.txt'
+	// doesn't work
+	sh 'curl -k $a > a.txt'
 }
 stage ('stage 4') {
     sh '''
