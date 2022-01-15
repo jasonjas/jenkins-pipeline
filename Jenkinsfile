@@ -17,6 +17,7 @@ try {
 node('master') {
 stage ('Stage 1') {
     echo "BUILD_URL=${env.BUILD_URL}"
+    a="hello"
  
     def workspace = pwd()
     echo "workspace=${workspace}"
@@ -32,7 +33,7 @@ stage ('Stage 2') {
     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             echo "${hidden}"
     }
-    sh 'echo hello \$hidden'
+    sh 'echo hello \$hidden \$a'
     echo 'value hidden: ${hidden}, value hidden: \$hidden'
     echo "Stage 2 current result: ${currentBuild.currentResult}"
     echo "Stage 2 result: ${currentBuild.result}"
