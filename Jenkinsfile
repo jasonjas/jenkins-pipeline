@@ -17,7 +17,7 @@ try {
 node('master') {
 stage ('Stage 1') {
     echo "BUILD_URL=${env.BUILD_URL}"
-    a="hello"
+    a="https://google.com"
  
     def workspace = pwd()
     echo "workspace=${workspace}"
@@ -35,7 +35,7 @@ stage ('Stage 2') {
     }
 }
 stage ('stage 3') {
-	sh "echo \${hello}"
+	sh "curl -k \${a} > a.txt"
 }
 stage ('stage 4') {
     sh '''
