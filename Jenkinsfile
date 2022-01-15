@@ -33,6 +33,8 @@ stage ('Stage 2') {
     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             echo "${hidden}"
     }
+}
+stage ('stage 3') {
     sh """
 	echo ${a}
 	echo $hidden
