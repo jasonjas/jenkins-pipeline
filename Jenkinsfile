@@ -13,7 +13,7 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
-a="https://google.com"
+def a="https://google.com"
 
 try {
 node('master') {
