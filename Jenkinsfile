@@ -13,11 +13,12 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
+a="https://google.com"
+
 try {
 node('master') {
 stage ('Stage 1') {
     echo "BUILD_URL=${env.BUILD_URL}"
-    a="https://google.com"
  
     def workspace = pwd()
     echo "workspace=${workspace}"
