@@ -35,10 +35,7 @@ stage ('Stage 2') {
     }
 }
 stage ('stage 3') {
-    sh """
-	echo ${a}
-	echo $hidden
-    """
+	sh "echo \${hello}"
 }
 stage ('stage 4') {
     sh '''
